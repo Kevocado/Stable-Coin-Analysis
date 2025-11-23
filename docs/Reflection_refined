@@ -1,28 +1,26 @@
-# Initial_Reflection.md
+ Team & Persona
+- Team Name: Group 15
+- Persona: Emerging Markets Analyst
+- Organization: International Development Organization (or remittance company like Wise)
+- Stablecoin Choice: USDC or USDT (Focus on ONE for deep analysis)
+- Time Window: Last 6 months (or last 90 days if dataset is very large)
 
-## Team & Persona
-- **Team Name**: Group 15
-- **Persona**: Emerging Markets Analyst
-- **Organization**: International Development Organization (or remittance company like Wise)
-- **Stablecoin Choice**: USDC or USDT? (Focus on ONE)
-- **Time Window**: Last 6 months (or last 90 days if data is dense)
+Primary Business Questions (Pick 2–3)
+1. What percentage of stablecoin transactions are small transfers (<$1,000)—do they resemble remittance behavior, or are they mostly large/institutional trades?
+2. How do on-chain fees (gas + off-ramp cost) compare to the digital remittance benchmark of $7.10 per transfer?
+3. Do we see usage patterns (e.g., time of day, weekly cycles) that align with retail users, or are peak periods dominated by speculative trading?
+4. Where do transfers concentrate: exchanges (cashing out), DeFi protocols (trading), or P2P addresses?
 
-## Primary Business Questions (Pick 2–3)
-1. What % of transactions are <$1,000 (remittance-sized)?
-2. How do on-chain fees (gas + off-ramp) compare to $7.10 benchmark?
-3. Are there time-of-day patterns suggesting retail usage (e.g., weekday mornings)?
-4. Where do transfers concentrate: exchanges (cashing out) vs. DeFi (trading) vs. P2P?
-
-## Key Metrics We'll Need
-- Daily/weekly transaction volume (count AND USD value)
+Key Metrics We’ll Need
+- Daily/weekly transaction volume (count and USD value)
 - Transaction size distribution (percentiles: p10, p25, median, p75, p90)
-- Average gas cost per transaction (in USD, including off-ramp estimate)
-- Hourly activity patterns (UTC hour) to proxy geographic usage
-- Top 20 wallet types (CEX, DeFi protocol, labeled retail, unknown)
-- Volume flowing to regional exchanges (if labelable)
+- Average gas cost per transfer (in USD, including $1.50 off-ramp estimate)
+- Time-of-day activity (UTC hour) to infer geographic usage
+- Top 20 wallet types (centralized exchanges, DeFi protocols, identified retail, and unknowns)
+- Volume flowing to regional exchanges or wallets (if identifiable)
 
-## Initial Hypotheses (Will Test)
-- [ ] Most volume is large transfers (>$10k) → institutional
-- [ ] Gas costs alone exceed $7.10 on Ethereum Mainnet
-- [ ] Peak activity aligns with "Global North" trading hours, not "Global South" remittance hours
-- [ ] Top 20 addresses hold >80% of daily volume → not useful for retail
+Initial Hypotheses
+- Most stablecoin volume consists of large-value institutional transfers, not retail-sized remittances
+- Ethereum Mainnet transaction fees often exceed the $7.10 benchmark
+- Peak activity is seen during US/EU trading hours ("Global North"), rather than "Global South" retail remittance periods
+- The largest 20 wallets account for most transaction volume, indicating concentration among whales rather than widespread retail utility
