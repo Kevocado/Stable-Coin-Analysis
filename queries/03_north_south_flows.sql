@@ -51,22 +51,22 @@ transfers AS (
 SELECT 
     t.month,
     sc.symbol AS token,
-    sender_label.region AS sending_region,
-    receiver_label.region AS receiving_region,
+    COALESCE(sender_label.region, 'Unlabeled') AS sending_region,
+    COALESCE(receiver_label.region, 'Unlabeled') AS receiving_region,
     SUM(t.amount_usd) AS total_volume_usd,
     COUNT(*) AS transfer_count
 FROM transfers t
--- Join to identify SENDER region
-JOIN exchange_labels sender_label ON t.sender = sender_label.address
--- Join to identify RECEIVER region
-JOIN exchange_labels receiver_label ON t.receiver = receiver_label.address
+-- Join to identify SENDER region (Use LEFT JOIN to keep unlabeled senders)
+LEFT JOIN exchange_labels sender_label ON t.sender = sender_label.address
+-- Join to identify RECEIVER region (Use LEFT JOIN to keep unlabeled receivers)
+LEFT JOIN exchange_labels receiver_label ON t.receiver = receiver_label.address
 -- Join to get Token Symbol
 JOIN stablecoin_contracts sc ON t.contract_address = sc.contract_address
 
 WHERE 
-    -- CORE FILTER: We only want flows FROM North TO South
-    sender_label.region = 'Global North'
-    AND receiver_label.region = 'Global South'
+    -- DEBUG FILTER: Show any flow where AT LEAST ONE side is labeled
+    -- This helps verify if the addresses are active at all.
+    (sender_label.region IS NOT NULL OR receiver_label.region IS NOT NULL)
 
 GROUP BY 1, 2, 3, 4
 ORDER BY 1 DESC, 5 DESC;
