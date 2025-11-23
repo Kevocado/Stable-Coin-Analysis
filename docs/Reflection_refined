@@ -1,0 +1,28 @@
+# Initial_Reflection.md
+
+## Team & Persona
+- **Team Name**: Group 15
+- **Persona**: Emerging Markets Analyst
+- **Organization**: International Development Organization (or remittance company like Wise)
+- **Stablecoin Choice**: USDC or USDT? (Focus on ONE)
+- **Time Window**: Last 6 months (or last 90 days if data is dense)
+
+## Primary Business Questions (Pick 2–3)
+1. What % of transactions are <$1,000 (remittance-sized)?
+2. How do on-chain fees (gas + off-ramp) compare to $7.10 benchmark?
+3. Are there time-of-day patterns suggesting retail usage (e.g., weekday mornings)?
+4. Where do transfers concentrate: exchanges (cashing out) vs. DeFi (trading) vs. P2P?
+
+## Key Metrics We'll Need
+- Daily/weekly transaction volume (count AND USD value)
+- Transaction size distribution (percentiles: p10, p25, median, p75, p90)
+- Average gas cost per transaction (in USD, including off-ramp estimate)
+- Hourly activity patterns (UTC hour) to proxy geographic usage
+- Top 20 wallet types (CEX, DeFi protocol, labeled retail, unknown)
+- Volume flowing to regional exchanges (if labelable)
+
+## Initial Hypotheses (Will Test)
+- [ ] Most volume is large transfers (>$10k) → institutional
+- [ ] Gas costs alone exceed $7.10 on Ethereum Mainnet
+- [ ] Peak activity aligns with "Global North" trading hours, not "Global South" remittance hours
+- [ ] Top 20 addresses hold >80% of daily volume → not useful for retail
