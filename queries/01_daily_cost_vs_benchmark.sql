@@ -30,12 +30,12 @@ SELECT
     t.day,
     
     -- METRIC 1: The "Digital" Competitor (Wise/Remitly)
-    -- Benchmark: World Bank Digital-Only MTO Index (3.55% of $200)
-    7.10 AS digital_competitor_cost,
+    -- Benchmark: User specified Digital-Only MTO Index (3.5% of $200)
+    7.00 AS digital_competitor_cost,
 
     -- METRIC 2: The "Traditional" Benchmark (Western Union/Banks)
-    -- Benchmark: World Bank Global Average (6.49% of $200)
-    12.98 AS traditional_benchmark_cost,
+    -- Benchmark: User specified Global Average (7% of $200)
+    14.00 AS traditional_benchmark_cost,
 
     -- METRIC 3: The True Crypto Cost
     -- Formula: (Avg Gas Fee) + (Exchange Withdrawal Fee approx $1.50)
