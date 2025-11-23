@@ -1,15 +1,47 @@
--- Title: Average Gas Fee for USDT Transfers vs World Bank Benchmark
--- Description: Calculates the daily average gas cost in USD to send USDT and compares it to a 6.5% remittance fee.
+-- Title: Remittance Wars: Crypto vs. Western Union vs. Wise
+-- Description: Compares the cost of sending $200 USD via USDT vs. Global Benchmarks.
+-- Benchmarks Source: World Bank Remittance Prices Worldwide (Q1 2025)
 
-SELECT
-    DATE_TRUNC('day', evt_block_time) AS day,
-    AVG(tx.gas_used * tx.gas_price / 1e18 * p.price) AS avg_fee_usd,
-    6.5 AS world_bank_benchmark -- Flat line for comparison ($13.00 for a $200 transfer is 6.5%)
-FROM erc20_ethereum.evt_Transfer t
-JOIN ethereum.transactions tx ON t.evt_tx_hash = tx.hash
-LEFT JOIN prices.usd p ON p.minute = DATE_TRUNC('minute', evt_block_time)
-WHERE t.contract_address = 0xdac17f958d2ee523a2206206994597c13d831ec7 -- USDT Contract Address
-AND p.symbol = 'ETH' -- We need ETH price to calculate gas cost in USD
-AND t.evt_block_time > NOW() - INTERVAL '3 months'
+WITH daily_eth_price AS (
+    -- Step 1: Get daily ETH price to convert Gas to USD
+    SELECT 
+        DATE_TRUNC('day', minute) AS day,
+        AVG(price) AS eth_price
+    FROM prices.usd
+    WHERE symbol = 'ETH'
+    AND minute > NOW() - INTERVAL '6' month
+    GROUP BY 1
+),
+
+usdt_transfers AS (
+    -- Step 2: Get USDT transfers to calculate average gas usage
+    SELECT 
+        DATE_TRUNC('day', evt_block_time) AS day,
+        gas_price,
+        gas_used
+    FROM erc20_ethereum.evt_Transfer t
+    JOIN ethereum.transactions tx ON t.evt_tx_hash = tx.hash
+    WHERE t.contract_address = 0xdac17f958d2ee523a2206206994597c13d831ec7 -- USDT Contract
+    AND t.evt_block_time > NOW() - INTERVAL '6' month
+)
+
+-- Step 3: The Final Comparison Table
+SELECT 
+    t.day,
+    
+    -- METRIC 1: The "Digital" Competitor (Wise/Remitly)
+    -- Benchmark: World Bank Digital-Only MTO Index (3.55% of $200)
+    7.10 AS digital_competitor_cost,
+
+    -- METRIC 2: The "Traditional" Benchmark (Western Union/Banks)
+    -- Benchmark: World Bank Global Average (6.49% of $200)
+    12.98 AS traditional_benchmark_cost,
+
+    -- METRIC 3: The True Crypto Cost
+    -- Formula: (Avg Gas Fee) + (Exchange Withdrawal Fee approx $1.50)
+    (AVG(CAST(t.gas_used AS DOUBLE) * CAST(t.gas_price AS DOUBLE) / 1e18 * p.eth_price) + 1.50) AS crypto_total_cost
+
+FROM usdt_transfers t
+JOIN daily_eth_price p ON t.day = p.day
 GROUP BY 1
 ORDER BY 1 DESC;
