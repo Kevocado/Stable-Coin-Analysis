@@ -70,3 +70,4 @@ To fully validate this thesis, we need the following data artifacts:
     *   **X-Axis:** Transfer Size Log Scale ($10, $100, $1k, $10k).
     *   **Y-Axis:** Frequency.
     *   *Insight:* If the peak is at $100k, it's not remittance. We want to see a peak at $200-$500.
+    * Test
