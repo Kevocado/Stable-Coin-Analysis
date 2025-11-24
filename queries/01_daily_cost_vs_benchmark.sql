@@ -39,7 +39,11 @@ SELECT
 
     -- METRIC 3: The True Crypto Cost
     -- Formula: (Avg Gas Fee) + (Exchange Withdrawal Fee approx $1.50)
-    (AVG(CAST(t.gas_used AS DOUBLE) * CAST(t.gas_price AS DOUBLE) / 1e18 * p.eth_price) + 1.50) AS crypto_total_cost
+    (AVG(CAST(t.gas_used AS DOUBLE) * CAST(t.gas_price AS DOUBLE) / 1e18 * p.eth_price) + 1.50) AS crypto_total_cost,
+
+    -- METRIC 4: The "L2 Potential" (Base/Optimism)
+    -- Benchmark: Theoretical cost on L2 (~$0.01 gas + $0.50 off-ramp efficiency)
+    0.51 AS l2_theoretical_cost
 
 FROM usdt_transfers t
 JOIN daily_eth_price p ON t.day = p.day

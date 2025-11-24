@@ -54,6 +54,13 @@ SELECT
     COALESCE(sender_label.region, 'Unlabeled') AS sending_region,
     COALESCE(receiver_label.region, 'Unlabeled') AS receiving_region,
     SUM(t.amount_usd) AS total_volume_usd,
+    
+    -- SEGMENTATION: Retail vs Whale
+    -- Retail (<$1k): The actual remittance signal
+    SUM(CASE WHEN t.amount_usd < 1000 THEN t.amount_usd ELSE 0 END) AS retail_volume_usd,
+    -- Whale (>$100k): The arbitrage noise
+    SUM(CASE WHEN t.amount_usd > 100000 THEN t.amount_usd ELSE 0 END) AS whale_volume_usd,
+    
     COUNT(*) AS transfer_count
 FROM transfers t
 -- Join to identify SENDER region (Use LEFT JOIN to keep unlabeled senders)
