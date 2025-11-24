@@ -32,6 +32,12 @@ We compare the cost of sending $200 via Stablecoins vs. Traditional Rails.
     *   **Global South:** Bitso, Binance LatAm, Yellow Card, Tron-heavy wallets.
 *   **Metric:** Monthly Volume (USD) sent from [North Group] -> [South Group].
 
+### Risks & Mitigations (CFO Feedback)
+*   **The Mainnet Premium:** Ethereum Mainnet gas fees ($2-$10) are often prohibitive for $200 remittances.
+    *   *Mitigation:* This analysis establishes a "Worst Case" cost baseline. Future work must analyze L2s (Base, Optimism) where fees are <$0.10.
+*   **Arbitrage Noise:** High volume flows may be institutional arbitrage, not retail remittance.
+    *   *Mitigation:* We use the **Transfer Size Histogram** to filter out "Whale" activity and focus only on the "Remittance Bucket" ($100-$1,000) share of volume.
+
 ---
 
 ## 3. Analyst Recommendations: Queries & Visualizations
