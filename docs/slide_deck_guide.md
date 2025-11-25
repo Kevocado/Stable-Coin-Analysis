@@ -1,82 +1,76 @@
-# Slide Deck Guide: Stablecoin Remittance Analysis
+# 🚀 Refined 6-Slide Presentation Guide
 
-**Persona:** Emerging Markets Analyst
-**Audience:** CFO & Strategy Team
-**Goal:** Prove that stablecoins are a viable remittance rail *if* we navigate the specific constraints of cost and liquidity.
+This outline provides the exact text and content structure for your 6-slide presentation, incorporating all CFO feedback and focusing on the strategic narrative.
 
 ---
 
 ## Slide 1: Title & Context
-*   **Title:** "The Digital Remittance Bridge: Analyzing Stablecoin Flows to the Global South"
-*   **Subtitle:** A Data-Driven Assessment of Cost, Volume, and Liquidity
-*   **Team:** [Your Team Name]
-*   **Visual:** A clean, high-level graphic or logo.
-*   **Speaker Note:** "Good morning. Today we are presenting our analysis on whether stablecoins can truly disrupt the $700B remittance market, specifically focusing on flows from the Global North to the Global South."
+
+| Component | Text / Visual |
+| :--- | :--- |
+| **Title** | **The Digital Remittance Bridge: Stablecoin Flows to the Global South** |
+| **Subtitle** | A Data-Driven Assessment of Cost, Volume, and Liquidity Constraints |
+| **Team/Date** | [Your Team Name] |
+| **Speaker Note** | "Good morning. We assess whether stablecoins can truly disrupt the $700B remittance market, focusing on overcoming the key constraints of cost and local liquidity." |
+| **Visual** | A clean graphic representing North-to-South flow (e.g., two icons connected by a digital bridge). |
 
 ---
 
-## Slide 2: Executive Summary (The "BLUF")
-*   **Key Findings:**
-    1.  **Cost:** Mainnet is too expensive ($2-$10), but L2s offer a theoretical cost of $0.51, beating the $7.00 digital benchmark.
-    2.  **Volume:** "True Remittance" (Retail <$1k) is present but obscured by massive institutional arbitrage. We must filter the noise.
-    3.  **Liquidity:** The Global South runs on USDT. A USDC-only strategy will fail due to slippage.
-*   **Recommendation:** **Proceed with Pilot.** Launch a "L2-First" product on Optimism/Base, supporting USDT to match local liquidity depth.
-*   **Visual:** 3 Big Numbers or Icons representing Cost, Volume, Liquidity.
+## Slide 2: Executive Summary (The BLUF)
+
+| Component | Text / Visual |
+| :--- | :--- |
+| **Headline** | **BLUF: Viability Confirmed, Strategy Refinement Required** |
+| **Key Finding 1: Cost** | **Mainnet is Expensive, L2 is Viable.** L2s offer a theoretical cost of ~$0.51, validating the long-term financial model against the $7.00 digital benchmark. |
+| **Key Finding 2: Volume** | **Filter the Noise, Find the Signal.** 90%+ of raw volume is institutional arbitrage. Retail Flow (<$1k) is the true KPI and shows early adoption. |
+| **Key Finding 3: Liquidity** | **The South Runs on USDT.** A USDC-only strategy creates critical slippage barriers. We must support USDT to be competitive. |
+| **Recommendation** | **Proceed with Pilot.** Launch an "L2-First" product supporting both USDC and USDT to match local market reality. |
+| **Visual** | 3 Big Icon/Number Callouts for Cost, Volume, and Liquidity. |
 
 ---
 
-## Slide 3: Methodology & Critical Limitations
-*   **Data Source:** Ethereum Mainnet (Dune Analytics).
-*   **Timeframe:** Last 6-12 Months.
-*   **Geographic Proxy:** CEX Labels (Coinbase/Kraken = North; Binance LatAm/Bitso = South).
-*   **CRITICAL LIMITATION (The "CFO Defense"):**
-    *   *Text:* "**Data Gap:** Analysis is limited to Ethereum Mainnet. High fees skew the 'Retail' picture. L2 data is the next required step."
-    *   *Why:* This preempts the "Gas is too high" objection.
-*   **Visual:** A simple process flow: `Raw Data -> Geo-Labeling -> Noise Filtering -> Insight`.
+## Slide 3: Constraint 1: The Cost Barrier & L2 Solution
+
+| Component | Text / Visual |
+| :--- | :--- |
+| **Headline** | **Mainnet is the Ceiling. L2 is the Floor.** |
+| **Visual** | **Line Chart** (From `queries/01_daily_cost_vs_benchmark.sql`). <br> Lines: **L2 Theoretical ($0.51)**, Crypto Mainnet (Variable), Digital Benchmark ($7.00). |
+| **Insight 1** | **The Technology Works:** The L2 theoretical cost line consistently sits at ~$0.51, proving the core technology is financially superior to the $7.00 digital benchmark. |
+| **Insight 2 (CFO Defense)** | **Critical Limitation:** Our current Mainnet data is skewed. High fees mean "Retail" users are often forced to use intermediaries. Ingesting L2 data is the immediate next step to fully validate the $0.51 cost thesis. |
 
 ---
 
-## Slide 4: The Cost Barrier (And the L2 Solution)
-*   **Headline:** "Mainnet is the Ceiling. L2 is the Floor."
-*   **Visual:** **Line Chart** from `queries/01_daily_cost_vs_benchmark.sql`.
-    *   *Lines:* Traditional ($14), Digital ($7), Crypto Mainnet (Variable), L2 Theoretical ($0.51).
-*   **Insight:** "While Mainnet (Blue) often breaches the $7 viability line, the L2 alternative (Green) consistently sits at ~$0.51. This proves the *technology* works, even if the *network* (Mainnet) is currently premium."
+## Slide 4: Constraint 2: Volume Signal & Economic Weight
+
+| Component | Text / Visual |
+| :--- | :--- |
+| **Headline** | **Finding the Retail User: Signal vs. Economic Weight** |
+| **Visual 1 (Top Half)** | **Side-by-Side Bar Chart** (From `queries/03_north_south_flows.sql`) <br> Bar A: Whale Volume (>$100k) (Noise) <br> Bar B: Retail Volume (<$1k) (Signal) |
+| **Narrative 1** | **Filtering the Noise:** Raw volume is deceptive. 90% is 'Whale' arbitrage (Noise). We must focus solely on Retail Flow (<$1k) (Signal) to track remittance adoption. |
+| **Visual 2 (Bottom Half)** | **Histogram** (From `queries/04_transfer_size_histogram.sql`) <br> Y-Axis: % of Total Volume (Economic Weight) |
+| **Narrative 2** | **Validating the 'Little Guy':** The distinct cluster of activity in the $100-$1,000 range holds [Insert %] of the total economic volume. This validates that our target persona exists and transacts on-chain. |
 
 ---
 
-## Slide 5: The "True" Remittance Flow
-*   **Headline:** "Filtering the Noise: Finding the Retail User"
-*   **Visual:** **Stacked Bar Chart** or **Side-by-Side Bars** from `queries/03_north_south_flows.sql`.
-    *   *Series:* Whale Volume (>$100k) vs. Retail Volume (<$1k).
-*   **Insight:** "If we look at raw volume, it looks like billions. But 90% of that is 'Whale' arbitrage (Grey). When we filter for 'Retail' flows (Blue), we see the actual remittance adoption curve. It's smaller, but it's the signal we need to track."
+## Slide 5: Constraint 3: The Liquidity Reality (The USDT Mandate)
+
+| Component | Text / Visual |
+| :--- | :--- |
+| **Headline** | **The Liquidity Reality: Meeting the Market Where It Is** |
+| **Visual** | **Bar Chart or Pie Chart** (From `queries/05_stablecoin_preference.sql`) <br> Comparison: USDT Volume vs USDC Volume in Global South corridors. |
+| **Insight 1** | **Local Preference is USDT:** While we might prefer USDC, our analysis shows the Global South market prefers USDT by a [Insert Margin] margin. |
+| **Insight 2** | **The Competitive Edge:** If we launch a USDC-only product, our users will pay high slippage and swap fees. We must support USDT to be a competitive remittance rail. |
+| **Insight 3** | **Regional Breakdown:** Adoption is strongest in [Insert Top Receiving Region/Entity], which also shows the highest [USDT/USDC] preference. |
 
 ---
 
-## Slide 6: Validating the User Base
-*   **Headline:** "The Economic Weight of the 'Little Guy'"
-*   **Visual:** **Histogram (Bar Chart)** from `queries/04_transfer_size_histogram.sql`.
-    *   *X-Axis:* Transfer Size Buckets.
-    *   *Y-Axis:* **% of Total Volume** (Not just count!).
-*   **Insight:** "This chart answers the 'So What?'. We see a distinct cluster of activity in the $100-$1,000 range. These aren't bots; these are people paying rent and sending money home. This validates our target persona exists on-chain."
+## Slide 6: Conclusion & Strategic Roadmap
 
----
-
-## Slide 7: The Liquidity Reality (USDT vs USDC)
-*   **Headline:** "Meeting the Market Where It Is"
-*   **Visual:** **Bar Chart or Pie Chart** from `queries/05_stablecoin_preference.sql`.
-    *   *Comparison:* USDT Volume vs USDC Volume in Global South corridors.
-*   **Insight:** "While we might prefer USDC for regulatory reasons, the Global South prefers USDT by a wide margin. If we launch a USDC-only product, our users will pay 1-2% in swap fees. We must support USDT to be competitive."
-
----
-
-## Slide 8: Conclusion & Next Steps
-*   **Summary:** We have a viable tech stack (L2s), a visible retail user base (filtered data), and a clear product requirement (USDT support).
-*   **Next Steps:**
-    1.  **Expand Data:** Ingest L2 data (Base/Optimism) to validate the $0.51 cost thesis.
-    2.  **Pilot Program:** Launch a small-scale corridor test (e.g., US -> Mexico) using the "Retail" parameters defined here.
-*   **Visual:** A roadmap graphic or checklist.
-
----
-
-## Appendix: SQL Queries
-*   Include screenshots of your 4-5 key queries with comments explaining the logic.
+| Component | Text / Visual |
+| :--- | :--- |
+| **Headline** | **Strategic Roadmap: Launching the L2-First Pilot** |
+| **Summary** | We have a viable tech stack (L2s), a validated retail user base (filtered data), and clear product requirements (USDT support). |
+| **Next Step 1: Data Expansion** | Ingest L2 data (Base/Optimism) immediately to fully validate the $0.51 cost thesis and identify L2-native retail flow. |
+| **Next Step 2: Pilot Program** | Launch a small-scale corridor test (e.g., US -> [Top Region]) using the "L2-First" approach and mandated USDT support. |
+| **Next Step 3: KPI Alignment** | Future reporting must use `retail_volume_usd` as the primary measure of success for this line of business. |
+| **Visual** | A simple roadmap or checklist with check marks. |
