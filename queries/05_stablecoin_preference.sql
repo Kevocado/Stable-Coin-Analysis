@@ -1,5 +1,8 @@
 -- Title: Stablecoin Preference in the Global South
 -- Description: Compares USDT vs USDC usage specifically for flows involving "Global South" entities.
+-- Strategic Relevance: "Why does this matter?" (CFO Question). 
+-- Answer: Liquidity dictates spreads. If the Global South uses USDT (90% share), then offering USDC-only products will fail due to high conversion costs (slippage).
+-- We need to meet the market where the liquidity is.
 
 WITH exchange_labels AS (
     -- Reuse the same manual mapping as before

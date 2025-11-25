@@ -34,9 +34,11 @@ We compare the cost of sending $200 via Stablecoins vs. Traditional Rails.
 
 ### Risks & Mitigations (CFO Feedback)
 *   **The Mainnet Premium:** Ethereum Mainnet gas fees ($2-$10) are often prohibitive for $200 remittances.
-    *   *Mitigation:* This analysis establishes a "Worst Case" cost baseline. Future work must analyze L2s (Base, Optimism) where fees are <$0.10.
+    *   *Mitigation:* This analysis establishes a "Worst Case" cost baseline. **CRITICAL LIMITATION:** This data only covers Ethereum Mainnet. Future work **MUST** analyze L2s (Base, Optimism) where fees are <$0.10 to prove long-term viability. We are not killing the project based on Mainnet fees alone.
 *   **Arbitrage Noise:** High volume flows may be institutional arbitrage, not retail remittance.
     *   *Mitigation:* We use the **Transfer Size Histogram** to filter out "Whale" activity and focus only on the "Remittance Bucket" ($100-$1,000) share of volume.
+*   **The "So What?" on Stablecoin Preference:** Why compare USDC vs USDT?
+    *   *Mitigation:* It's not academic; it's operational. If USDT has 10x the liquidity in the Global South, our "USDC-only" product would suffer from high slippage. We measure this to ensure we build on the most liquid rails.
 
 ---
 
@@ -51,9 +53,9 @@ To fully validate this thesis, we need the following data artifacts:
 4.  **[PROPOSED] `04_transfer_size_histogram.sql`**:
     *   *Purpose:* Validate "Remittance" behavior. Are flows mostly $200-$1,000 (Remittance) or $10k+ (B2B/Speculation)?
     *   *Hypothesis:* True remittance corridors will have a high density of <$1,000 transfers.
-5.  **[PROPOSED] `05_stablecoin_preference.sql`**:
     *   *Purpose:* Compare USDT vs USDC usage in Global South flows.
     *   *Hypothesis:* Global South prefers USDT (liquidity), Global North prefers USDC (regulation).
+    *   *Status:* [REFINED] Added strategic context on liquidity/spreads.
 
 ### B. Visualizations (Dashboard Concept)
 1.  **The "Remittance Gap" Chart (Line Chart)**
