@@ -1,6 +1,6 @@
-# 🚀 Refined 6-Slide Presentation Guide
+# 🚀 Refined 8-Slide Presentation Guide
 
-This outline provides the exact text and content structure for your 6-slide presentation, incorporating all CFO feedback and focusing on the strategic narrative.
+This outline provides the exact text and content structure for your 8-slide presentation, incorporating all CFO feedback and ensuring full compliance with the "Mini Project #2" rubric (including Methodology and AI Usage).
 
 ---
 
@@ -29,7 +29,19 @@ This outline provides the exact text and content structure for your 6-slide pres
 
 ---
 
-## Slide 3: Constraint 1: The Cost Barrier & L2 Solution
+## Slide 3: Methodology & Data Scope (Required)
+
+| Component | Text / Visual |
+| :--- | :--- |
+| **Headline** | **Data Sources, Scope, and Critical Limitations** |
+| **Data Source** | **Dune Analytics (Ethereum Mainnet):** Tables: `erc20_ethereum.evt_Transfer`, `prices.usd`, `labels.all`. |
+| **Time Window** | **Last 12 Months:** Focused on identifying long-term trends and recent adoption spikes. |
+| **Geographic Proxy** | **CEX Labeling:** Used known exchange addresses (Coinbase, Kraken vs. Binance LatAm, Bitso) to proxy "North" vs "South" flows. |
+| **Limitations** | **Mainnet-Only Bias:** Data excludes L2s (Base/Optimism). This inflates average transaction costs and undercounts micro-transactions. We adjust for this using "Theoretical L2" modeling. |
+
+---
+
+## Slide 4: Constraint 1: The Cost Barrier & L2 Solution
 
 | Component | Text / Visual |
 | :--- | :--- |
@@ -40,7 +52,7 @@ This outline provides the exact text and content structure for your 6-slide pres
 
 ---
 
-## Slide 4: Constraint 2: Volume Signal & Economic Weight
+## Slide 5: Constraint 2: Volume Signal & Economic Weight
 
 | Component | Text / Visual |
 | :--- | :--- |
@@ -52,7 +64,7 @@ This outline provides the exact text and content structure for your 6-slide pres
 
 ---
 
-## Slide 5: Constraint 3: The Liquidity Reality (The USDT Mandate)
+## Slide 6: Constraint 3: The Liquidity Reality (The USDT Mandate)
 
 | Component | Text / Visual |
 | :--- | :--- |
@@ -64,7 +76,7 @@ This outline provides the exact text and content structure for your 6-slide pres
 
 ---
 
-## Slide 6: Conclusion & Strategic Roadmap
+## Slide 7: Conclusion & Strategic Roadmap
 
 | Component | Text / Visual |
 | :--- | :--- |
@@ -74,3 +86,13 @@ This outline provides the exact text and content structure for your 6-slide pres
 | **Next Step 2: Pilot Program** | Launch a small-scale corridor test (e.g., US -> [Top Region]) using the "L2-First" approach and mandated USDT support. |
 | **Next Step 3: KPI Alignment** | Future reporting must use `retail_volume_usd` as the primary measure of success for this line of business. |
 | **Visual** | A simple roadmap or checklist with check marks. |
+
+---
+
+## Slide 8: AI Usage & References (Required)
+
+| Component | Text / Visual |
+| :--- | :--- |
+| **Headline** | **AI Framework & Resources** |
+| **AI Framework** | **1. Initial Reflection:** Defined persona (Emerging Markets Analyst) and questions before querying. <br> **2. Targeted Research:** Used AI to summarize stablecoin mechanics and remittance benchmarks. <br> **3. Critical Review:** Simulated "Skeptical CFO" feedback to identify the Mainnet/L2 gap. |
+| **References** | 1. Dune Analytics Documentation <br> 2. World Bank Remittance Prices Worldwide (Q1 2025) <br> 3. "Why Blockchains and Why Stablecoins?" (Course Material) |
